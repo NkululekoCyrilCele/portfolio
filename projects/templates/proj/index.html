@@ -1,0 +1,79 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Hugo 0.108.0">
+        <title>Nkululeko Cyril Cele</title>
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+        <meta name="theme-color" content="#712cf9">
+    </head>
+
+    <body>
+        <main>
+            <section class="py-5 text-center container">
+                <div class="row py-lg-5">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+                        <h1 class="fw-dark">Nkululeko Cyril Cele</h1>
+                        <p class="lead text-muted">Hi, my name is Nkululeko. I am a back-end developer who enjoys making
+                            Django apps. My favourite pastime is practicing martial arts.
+                        </p>
+                        <img src="{% static 'img/nkululeko.jpg' %}" alt="Nkululeko Cyril Cele" height="300">
+                        <p>
+                            <a href="mailto:nkululeko.cele@gmail.com" class="btn btn-primary my-2">E-mail</a>
+                            <a href="https://www.linkedin.com/in/nkululeko-cele-9b811821a/"
+                                class="btn btn-primary my-2">LinkedIn</a>
+                            <a href="https://github.com/NkululekoCyrilCele" class="btn btn-primary my-2">GitHub</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="album py-5 bg-light">
+                <div class="container">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        {% for project in projects %}
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <div class="card-header">
+                                    <p class="card-text">
+                                        <a href="{% url 'detail' project.id %}">{{ project.title }}</a>
+                                    </p>
+                                </div>
+                                <img class="card-image-top" src="{{ project.image.url }}">
+                                <div class="card-body">
+                                    <p class="card-text">{{ project.summary | truncatechars:15 }}</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p>
+                                            <a href="{{ project.url}}">GitHub
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/jquery-3.6.3.min.js' %}"></script>
+        <script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
+    </body>
+
+    <footer class=" mt-auto mb-4">
+        <div class="text-center">
+            <span>Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script>
+                Nkululeko Cyril Cele.
+            </span>
+        </div>
+    </footer>
+
+</html>
