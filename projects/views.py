@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
-from datetime import datetime
+from .models import Project
 
 
-class HomeView(TemplateView):
-    template_name = 'projects/index.html'
-    extra_context = {'today': datetime.today()}
+def home(request):
+    projects = Project.objects.all()
+    return render(request, 'projects/index.html', {
+        'projects': projects
+    })
